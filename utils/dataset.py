@@ -12,6 +12,7 @@ import random
 import logging
 import SimpleITK as sitk
 
+
 class MultiClassNiftiMerger:
     '''
     If you have multiple nifti files representing different classes for the same patient, then this 
@@ -267,3 +268,62 @@ class MetadataCopier:
 
             else:
                 print(f"No matching segmentation found for volume: {volume_file}")
+
+
+class DatasetRenamer:
+    '''
+    Example of usage
+
+    dataset_id = "300"
+    rename_trainset = False
+    rename_testset = True
+    path_to_data = "/data/train_test"
+    output_path = "/datasets/nnUNet_raw/Dataset300_JAWS"
+
+    renamer = DatasetRenamer(dataset_id, rename_trainset, rename_testset, path_to_data, output_path)
+    renamer.process()
+
+    '''
+    def __init__(self, dataset_id, rename_trainset, rename_testset, path_to_data, output_path):
+        self.dataset_id = dataset_id
+        self.rename_trainset = rename_trainset
+        self.rename_testset = rename_testset
+
+        self.path_to_data = path_to_data
+        self.path_to_train_image = glob(os.path.join(path_to_data, "train/images/*.nii.gz"))
+        self.path_to_train_labels = glob(os.path.join(path_to_data, "train/labels/*.nii.gz"))
+        self.path_to_test_image = glob(os.path.join(path_to_data, "valid/images/*.nii.gz"))
+        self.path_to_test_labels = glob(os.path.join(path_to_data, "valid/labels/*.nii.gz"))
+
+        self.output_path = output_path
+        self.path_to_nnunet_imagesTr = os.path.join(output_path, "imagesTr")
+        self.path_to_nnunet_labelsTr = os.path.join(output_path, "labelsTr")
+        self.path_to_nnunet_imagesTs = os.path.join(output_path, "imagesTs")
+
+        os.makedirs(self.path_to_nnunet_imagesTr, exist_ok=True)
+        os.makedirs(self.path_to_nnunet_labelsTr, exist_ok=True)
+        os.makedirs(self.path_to_nnunet_imagesTs, exist_ok=True)
+
+    def rename_files(self, files, destination_path, suffix):
+        for i, (vol, seg) in enumerate(files):
+            new_volume_filename = f"JAWS_{str(i).zfill(3)}_{suffix}.nii.gz"
+            new_volume_filepath = os.path.join(destination_path, new_volume_filename)
+            print(f"Volume file: {vol}")
+            print(f"New volume file: {new_volume_filepath}")
+            shutil.copy(vol, new_volume_filepath)
+
+            new_seg_filename = f"JAWS_{str(i).zfill(3)}.nii.gz"
+            new_seg_filepath = os.path.join(destination_path, new_seg_filename)
+            print(f"Segmentation file: {seg}")
+            print(f"New segmentation file: {new_seg_filepath}")
+            shutil.copy(seg, new_seg_filepath)
+
+    def process(self):
+        if self.rename_trainset:
+            self.rename_files(zip(self.path_to_train_image, self.path_to_train_labels), self.path_to_nnunet_imagesTr, '0000')
+            self.rename_files(zip(self.path_to_train_image, self.path_to_train_labels), self.path_to_nnunet_labelsTr, '')
+
+        if self.rename_testset:
+            self.rename_files(zip(self.path_to_test_image, self.path_to_test_labels), self.path_to_nnunet_imagesTs, '0000')
+            self.rename_files(zip(self.path_to_test_image, self.path_to_test_labels), self.path_to_nnunet_imagesTs, '')
+

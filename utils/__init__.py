@@ -1,1 +1,1 @@
-from .dataset import MetadataCopier, MultiClassNiftiMerger, DataSplitter
+from .dataset import MetadataCopier, MultiClassNiftiMerger, DataSplitter, DatasetRenamer
