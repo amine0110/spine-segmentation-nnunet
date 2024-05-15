@@ -1,0 +1,36 @@
+{   
+    "channel_names": {
+        "0": "CT" 
+    }, 
+    "labels": {
+        "background": 0,
+        "vertebrae_C1": 1,
+        "vertebrae_C2": 2,
+        "vertebrae_C3": 3,
+        "vertebrae_C4": 4,
+        "vertebrae_C5": 5,
+        "vertebrae_C6": 6,
+        "vertebrae_C7": 7,
+        "vertebrae_T1": 8,
+        "vertebrae_T2": 9,
+        "vertebrae_T3": 10,
+        "vertebrae_T4": 11,
+        "vertebrae_T5": 12,
+        "vertebrae_T6": 13,
+        "vertebrae_T7": 14,
+        "vertebrae_T8": 15,
+        "vertebrae_T9": 16,
+        "vertebrae_T10": 17,
+        "vertebrae_T11": 18,
+        "vertebrae_T12": 19,
+        "vertebrae_L1": 20,
+        "vertebrae_L2": 21,
+        "vertebrae_L3": 22,
+        "vertebrae_L4": 23,
+        "vertebrae_L5": 24,
+        "vertebrae_S1": 25
+    }, 
+    "numTraining": 762, 
+    "file_ending": ".nii.gz",
+    "overwrite_image_reader_writer": "SimpleITKIO"
+}
