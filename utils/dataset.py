@@ -268,3 +268,73 @@ class MetadataCopier:
 
             else:
                 print(f"No matching segmentation found for volume: {volume_file}")
+
+
+class DataRenamer:
+    """
+    If we use the pycad splitter to create the train/valid/test folders, then this class is adapted for that, and is waiting for the folders train and valid with the subforlders images and labels.
+    """
+
+    def __init__(self, path_to_input, path_to_output, dataset_id, structure):
+        self.dataset_id = dataset_id
+        self.structure = structure
+
+        self.path_to_train_image = glob(os.path.join(path_to_input, "train/images/*.nii.gz"))
+        self.path_to_train_labels = glob(os.path.join(path_to_input, "train/labels/*.nii.gz"))
+        self.path_to_test_image  = glob(os.path.join(path_to_input, "valid/images/*.nii.gz"))
+        self.path_to_test_labels  = glob(os.path.join(path_to_input, "valid/labels/*.nii.gz"))
+
+
+        output_path  = f"{path_to_output}/Dataset{self.dataset_id}_{self.structure}"
+        self.path_to_nnunet_imagesTr = os.path.join(output_path, "imagesTr")
+        self.path_to_nnunet_labelsTr = os.path.join(output_path, "labelsTr")
+        self.path_to_nnunet_imagesTs = os.path.join(output_path, "imagesTs")
+
+        os.makedirs(self.path_to_nnunet_imagesTr, exist_ok=True)
+        os.makedirs(self.path_to_nnunet_imagesTs, exist_ok=True)
+        os.makedirs(self.path_to_nnunet_labelsTr, exist_ok=True)
+    
+    def rename_train_data(self):
+        for i, (vol, seg) in enumerate(zip(self.path_to_train_image, self.path_to_train_labels)):
+
+            # Rename the training segmentations
+            print(f"Segmentation file: {seg}")
+            new_seg_filename = f"{self.structure}_{str(i).zfill(3)}.nii.gz"
+            new_seg_filepath = os.path.join(self.path_to_nnunet_labelsTr, new_seg_filename) 
+            print(f"new segmenation file: {new_seg_filepath}")
+
+            shutil.copy(seg, new_seg_filepath)
+
+            # Rename the training volumes
+            print(f"Volume file: {vol}")
+            new_volume_filename = f"{self.structure}_{str(i).zfill(3)}_0000.nii.gz"
+            new_volume_filepath = os.path.join(self.path_to_nnunet_imagesTr, new_volume_filename)
+            print(f"new volume file: {new_volume_filepath}") 
+
+            shutil.copy(vol, new_volume_filepath)
+    
+    def rename_test_data(self):
+        for i, (vol, seg) in enumerate(zip(self.path_to_test_image, self.path_to_test_labels)):
+
+            # Rename the testing volumes
+            print(f"Volume file: {vol}")
+            new_volume_filename = f"{self.structure}_{str(i).zfill(3)}_0000.nii.gz"
+            new_volume_filepath = os.path.join(self.path_to_nnunet_imagesTs, new_volume_filename)
+            print(f"new volume file: {new_volume_filepath}") 
+
+            shutil.copy(vol, new_volume_filepath)
+
+            # Rename the testing segmentations
+            print(f"segmentation file: {seg}")
+            new_seg_filename = f"{self.structure}_{str(i).zfill(3)}.nii.gz"
+            new_seg_filepath = os.path.join(self.path_to_nnunet_imagesTs, new_seg_filename)
+            print(f"new segmentation file: {new_seg_filepath}") 
+
+            shutil.copy(seg, new_seg_filepath)
+    
+    def run(self, rename_trainset=True, rename_testset=True):
+        if rename_trainset:
+            self.rename_train_data()
+        
+        if rename_testset:
+            self.rename_test_data()
