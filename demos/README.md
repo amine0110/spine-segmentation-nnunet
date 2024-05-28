@@ -21,4 +21,4 @@ Also another option to create a web application using Python, is Trame, this is 
 
 ---
 ## Do you need something different?
-Contact us at ![mailto](contact@pycad.co) and we can discuss your project in details 🚀
+Contact us at [contact@pycad.co](mailto:contact@pycad.co) and we can discuss your project in details 🚀
