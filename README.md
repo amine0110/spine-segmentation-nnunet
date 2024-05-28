@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=venom&height=300&color=gradient&text=Spine%20Segmentaion%20with%20nnUNet)
+![header](https://capsule-render.vercel.app/api?type=venom&height=300&color=gradient&text=Spine%20Segmentation)
 
 
 [![Static Badge](https://img.shields.io/badge/PYCAD-Blog-%23ffc800?logoColor=ffc800&link=https%3A%2F%2Fpycad.co%2F)](https://pycad.co/) [![Static Badge](https://img.shields.io/badge/PYCAD-YouTube-%23e80202?logoColor=ffc800&link=https%3A%2F%2Fgithub.com%2Famine0110%2Fpycad%2Ftree%2Fmain%2Fdocs)](https://www.youtube.com/channel/UCdYyILlPlehK4fKS5DiuMXQ) [![Static Badge](https://img.shields.io/badge/PYCAD-Portfolio-%23eb5d10?logoColor=ffc800&link=https%3A%2F%2Fgithub.com%2Famine0110%2Fpycad%2Ftree%2Fmain%2Fdocs)](https://pycad.co/portfolio/)
@@ -7,7 +7,7 @@
 
 This course consists of training a machine learning model for spine segmentation (multiclass). The model that will be used is a UNet, but not just a normal UNet, we will use the framework nnUNet to train the model as it is a state of the art model for medical image segmentation.
 
-![demo](/images/demo.giff)
+![demo](/images/demo.gif)
 
 The model has been built on `1089 CT scans` taken from the TotalSegmentator dataset. The dataset used ofor the course is hosted in Kaggle and can be accessed [here](https://www.kaggle.com/datasets/pycadmk/spine-segmentation-from-ct-scans).
 
@@ -20,7 +20,7 @@ This repository is hosting some materials that helps you prepare your dataset, t
 
 In the figure below you can see the training graph:
 
-<img src="/images/progress.png" alt="progress" width="300">
+<img src="/images/progress.png" alt="progress" width="600">
 
 And in the table below you can find some useful information:
 
