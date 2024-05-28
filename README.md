@@ -31,4 +31,9 @@ And in the table below you can find some useful information:
 
 
 To get an idea about the whole process steps, you can check [this guidelines doc](guidelines.md).
-
+ ---
+## Our Medical Imaging Resources
+- [Free medical imaging ebook.](https://pycad.co/medical-imaging-ebook/)
+- [Weekly medical imaging newsletter.](https://pycad.co/join-us/)
+- [> 50 medical imaging blog posts.](https://pycad.co/blog/)
+- [30:30 medical imaging notebooks.](https://pycad.co/30-30-medical-imaging-notebooks/)
