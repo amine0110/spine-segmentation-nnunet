@@ -7,6 +7,8 @@
 
 This course consists of training a machine learning model for spine segmentation (multiclass). The model that will be used is a UNet, but not just a normal UNet, we will use the framework nnUNet to train the model as it is a state of the art model for medical image segmentation.
 
+Check out our blog post about nnUNetv2 [here](https://pycad.co/nnunet-for-medical-image-segmentation/).
+
 ![demo](/images/demo.gif)
 
 The model has been built on `1089 CT scans` taken from the TotalSegmentator dataset. The dataset used ofor the course is hosted in Kaggle and can be accessed [here](https://www.kaggle.com/datasets/pycadmk/spine-segmentation-from-ct-scans).
