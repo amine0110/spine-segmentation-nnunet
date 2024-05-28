@@ -1,0 +1,8 @@
+stpyvista==0.0.9
+pyvista==0.42.3
+vtk==9.2.6
+streamlit==1.28.0
+PyQt5==5.15.7
+trame==3.6.1
+trame-vuetify==2.5.0
+trame-vtk==2.8.8
