@@ -14,9 +14,10 @@ The model has been built on `1089 CT scans` taken from the TotalSegmentator data
 ## Materials
 This repository is hosting some materials that helps you prepare your dataset, train the model and even some demos of how you can use or deploy your model with different technologies such as QT, Streamlit or Trame.
 - Prepare your dataset with the different modules available in [dataset.py](/utils/dataset.py) file.
-- [Desktop application or 3D visualization using vtk and pyqt](/demos/qt_demo.py).
-- [Webapp for 3D visualization using pyvista and streamlit](/demos/streamlit_demo.py)
-- [Webapp for 3D visualizatin using vtk and trame](/demos/trame_demo.py)
+- Life time access to the dataset in [Kaggle](https://www.kaggle.com/datasets/pycadmk/spine-segmentation-from-ct-scans).
+- The [model](https://www.dropbox.com/scl/fi/9nv9zsr07avkl78edwlwl/sample_outputs.zip?rlkey=xr4f1jyv2gxq5j903phnoebdz&st=l9t2e3ld&dl=0) trained during the course.
+- Sample [STLs](/demos/assets/stls/) for 3D visualization.
+- Multiple [demos](/demos/) where you can deploy your model after training.
 
 In the figure below you can see the training graph:
 
