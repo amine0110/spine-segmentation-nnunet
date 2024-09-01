@@ -49,6 +49,7 @@ set nnUNet_results=/workspace/datasets/nnunet_data/nnUNet_results
 ```
 pip install nibabel==5.2.1
 pip install SimpleITK==2.3.1
+pip install numpy==1.26.4
 ```
 ```
 conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
